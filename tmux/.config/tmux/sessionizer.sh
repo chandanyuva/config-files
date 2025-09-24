@@ -4,8 +4,8 @@
 sessions=$(tmux list-sessions -F "#S" 2>/dev/null)
 
 DIRS=(
-	"$HOME/"
-	"$HOME/.config/"
+	"$HOME/projects/"
+	# "$HOME/.config/"
 )
 
 # Add "New Session" option on top
