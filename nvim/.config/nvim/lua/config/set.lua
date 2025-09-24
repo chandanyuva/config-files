@@ -1,59 +1,126 @@
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+local cmd = vim.cmd
+-- Set options (global/buffer/windows-scoped)
+local opt = vim.opt
+-- Global variables
+local g = vim.g
+local indent = 2
+
+g.mapleader = " "
+g.maplocalleader = " "
 
 vim.g.have_nerd_font = true
 
-vim.o.number = true
-vim.o.relativenumber = true
-
-vim.o.termguicolors = true
-
-vim.o.mouse = "a"
-
---  See `:help 'clipboard'`
-vim.schedule(function()
-	vim.o.clipboard = "unnamedplus"
-end)
-
-vim.o.breakindent = true
-
--- Save undo history
--- TODO need to dive deep (not working)
--- vim.o.undofile = true
-
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Keep signcolumn on by default
-vim.o.signcolumn = "yes"
-
--- Decrease update time
-vim.o.updatetime = 250
-
--- Decrease mapped sequence wait time
--- vim.o.timeoutlen = 600
-
--- Configure how new splits should be opened
-vim.o.splitright = true
-vim.o.splitbelow = true
-
-vim.o.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+cmd([[
+	filetype plugin indent on
+]])
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = "split"
+opt.backspace = { "eol", "start", "indent" } -- allow backspacing over everything in insert mode
 
--- Show which line your cursor is on
-vim.o.cursorline = true
+opt.clipboard = "unnamedplus" -- allow neovim to access the system clipboard
+opt.fileencoding = "utf-8" -- the encoding written to a file
+opt.encoding = "utf-8" -- the encoding
+opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
+opt.syntax = "enable"
 
--- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10
+-- indention
+opt.autoindent = true -- auto indentation
+opt.expandtab = true -- convert tabs to spaces
+opt.shiftwidth = indent -- the number of spaces inserted for each indentation
+opt.smartindent = true -- make indenting smarter
+opt.softtabstop = indent -- when hitting <BS>, pretend like a tab is removed, even if spaces
+opt.tabstop = indent -- insert 2 spaces for a tab
+opt.shiftround = true -- use multiple of shiftwidth when indenting with "<" and ">"
+vim.o.breakindent = true
 
+-- tabline
+opt.showtabline = 2 -- always show tabs
+opt.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"
+
+-- search
+opt.hlsearch = true -- highlight all matches on previous search pattern
+opt.ignorecase = true -- ignore case in search patterns
+opt.smartcase = true -- smart case
+opt.wildignore = opt.wildignore + { "*/node_modules/*", "*/.git/*", "*/vendor/*" }
+opt.wildmenu = true -- make tab completion for files/buffers act like bash
+
+-- ui
+vim.o.winborder = "rounded" -- or 'single', 'double', 'shadow', 'solid'
 vim.o.confirm = true
+opt.cursorline = true -- highlight the current line
+opt.laststatus = 2 -- only the last window will always have a status line
+opt.lazyredraw = true -- don"t update the display while executing macros
+opt.list = true
+-- You can also add "space" or "eol", but I feel it"s quite annoying
+opt.listchars = {
+	tab = "┊ ",
+	trail = "·",
+	extends = "»",
+	precedes = "«",
+	nbsp = "×",
+}
 
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
+-- Hide cmd line (hide mode also)
+-- opt.cmdheight = 0 -- more space in the neovim command line for displaying messages
 
-vim.o.winborder = 'rounded' -- or 'single', 'double', 'shadow', 'solid'
+opt.mouse = "a" -- allow the mouse to be used in neovim
+opt.number = true -- set numbered lines
+vim.o.relativenumber = true
+opt.scrolloff = 18 -- minimal number of screen lines to keep above and below the cursor
+opt.sidescrolloff = 3 -- minimal number of screen columns to keep to the left and right (horizontal) of the cursor if wrap is `false`
+opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
+opt.splitbelow = true -- open new split below
+opt.splitright = true -- open new split to the right
+opt.wrap = true -- display a wrapped line
+
+-- backups
+opt.backup = false -- create a backup file
+opt.swapfile = false -- creates a swapfile
+opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+
+-- autocomplete
+opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
+opt.shortmess = opt.shortmess + {
+	c = true,
+} -- hide all the completion messages, e.g. "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found"
+
+-- By the way, -- INSERT -- is unnecessary anymore because the mode information is displayed in the statusline.
+opt.showmode = true
+
+-- perfomance
+-- remember N lines in history
+opt.history = 100 -- keep 100 lines of history
+opt.redrawtime = 1500
+opt.timeoutlen = 250 -- time to wait for a mapped sequence to complete (in milliseconds)
+opt.ttimeoutlen = 10
+opt.updatetime = 100 -- signify default updatetime 4000ms is not good for async update
+
+-- theme
+opt.termguicolors = true -- enable 24-bit RGB colors
+
+-- persistent undo
+-- Don"t forget to create folder $HOME/.local/share/nvim/undo
+local undodir = vim.fn.stdpath("data") .. "/undo"
+opt.undofile = true -- enable persistent undo
+opt.undodir = undodir
+opt.undolevels = 1000
+opt.undoreload = 10000
+
+-- Colorscheme
+-- By default, use rose-pine
+-- cmd.colorscheme "rose-pine"
+
+-- Enable virtual_lines feature if the current nvim version is 0.11+
+if vim.fn.has("nvim-0.11") > 0 then
+	vim.diagnostic.config({
+		-- Use the default configuration
+		-- virtual_lines = true,
+
+		-- Alternatively, customize specific options
+		virtual_lines = {
+			-- Only show virtual line diagnostics for the current cursor line
+			current_line = true,
+		},
+	})
+end
