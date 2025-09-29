@@ -1,4 +1,5 @@
 local cmd = vim.cmd
+
 -- Set options (global/buffer/windows-scoped)
 local opt = vim.opt
 -- Global variables
@@ -23,6 +24,11 @@ opt.fileencoding = "utf-8" -- the encoding written to a file
 opt.encoding = "utf-8" -- the encoding
 opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 opt.syntax = "enable"
+
+-- buffers
+vim.keymap.set("n", "<leader>]", ":bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>[", ":bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<leader>bx", ":bdelete<CR>", { desc = "Delete buffer" })
 
 -- indention
 opt.autoindent = true -- auto indentation
@@ -92,7 +98,7 @@ opt.showmode = true
 -- remember N lines in history
 opt.history = 100 -- keep 100 lines of history
 opt.redrawtime = 1500
-opt.timeoutlen = 400 -- time to wait for a mapped sequence to complete (in milliseconds)
+-- opt.timeoutlen = 400 -- time to wait for a mapped sequence to complete (in milliseconds)
 opt.ttimeoutlen = 10
 opt.updatetime = 100 -- signify default updatetime 4000ms is not good for async update
 
