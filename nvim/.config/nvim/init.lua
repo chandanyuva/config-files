@@ -1,6 +1,7 @@
 require("config.set")
 require("config.map")
 require("config.lazy")
+require("config.backup")
 
 -- Colorscheme
 -- By default, use rose-pine
