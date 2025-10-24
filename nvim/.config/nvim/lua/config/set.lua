@@ -73,7 +73,7 @@ opt.listchars = {
 opt.mouse = "a" -- allow the mouse to be used in neovim
 opt.number = true -- set numbered lines
 vim.o.relativenumber = true
-opt.scrolloff = 18 -- minimal number of screen lines to keep above and below the cursor
+opt.scrolloff = 5 -- minimal number of screen lines to keep above and below the cursor
 opt.sidescrolloff = 3 -- minimal number of screen columns to keep to the left and right (horizontal) of the cursor if wrap is `false`
 opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
 opt.splitbelow = true -- open new split below
@@ -81,9 +81,32 @@ opt.splitright = true -- open new split to the right
 opt.wrap = true -- display a wrapped line
 
 -- backups
-opt.backup = false -- create a backup file
+
+-- Ensure backup directory exists
+local backup_dir = vim.fn.stdpath("data") .. "/backup/"
+if vim.fn.isdirectory(backup_dir) == 0 then
+	vim.fn.mkdir(backup_dir, "p")
+end
+
+opt.backup = true -- create a backup file
+opt.backupext = ".bak"
+opt.backupdir = { backup_dir, "/tmp/" }
+
 opt.swapfile = false -- creates a swapfile
 opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+
+-- undos
+-- Ensure undo directory exists
+local undo_dir = vim.fn.stdpath("data") .. "/undo/"
+if vim.fn.isdirectory(undo_dir) == 0 then
+	vim.fn.mkdir(undo_dir, "p")
+end
+
+-- Enable persistent undo
+opt.undofile = true -- save undo history to files
+opt.undodir = undo_dir -- location for undo files
+opt.undolevels = 10000 -- large undo history
+opt.undoreload = 10000 -- max buffer reload undo steps
 
 -- autocomplete
 opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp

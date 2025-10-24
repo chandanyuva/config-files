@@ -25,6 +25,11 @@ return {
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
+		styles = {
+			bold = true,
+			italic = false,
+			transparency = true,
+		},
 		config = function()
 			vim.cmd("colorscheme rose-pine")
 		end,
