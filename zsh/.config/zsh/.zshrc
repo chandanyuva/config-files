@@ -1,13 +1,15 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# auto start tmux 
+# auto start tmux always
 # if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
 #     tmux attach -t default || tmux new -s default
 # fi
 
-# npm in arch issue
-export PATH=$HOME/.npm-global/bin:$PATH
+# auto start tmux only when sshing
+if [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
+    exec tmux new-session -A -s main
+fi
 
 # Enable colors and change prompt:
 autoload -U colors && colors
