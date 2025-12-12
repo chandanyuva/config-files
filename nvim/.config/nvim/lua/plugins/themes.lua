@@ -25,12 +25,16 @@ return {
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
-		styles = {
-			bold = true,
-			italic = false,
-			transparency = true,
-		},
 		config = function()
+			require("rose-pine").setup({
+				styles = {
+					bold = true,
+					italic = false,
+				},
+				highlight_groups = {
+					Comment = { italic = false },
+				},
+			})
 			vim.cmd("colorscheme rose-pine")
 		end,
 	},
