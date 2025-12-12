@@ -61,7 +61,6 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::alias-finder
-zinit snippet OMZP::safe-paste
 zinit snippet OMZP::tailscale
 
 # ----- plugins and snippets -------------------------------------------------
