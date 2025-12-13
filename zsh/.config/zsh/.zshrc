@@ -170,5 +170,7 @@ alias lta="exa --sort Name --long --tree --all"
 # ----- Shell integrations ---------------------------------------------------
 
 eval "$(fzf --zsh)"
+eval "$(keychain --eval --quiet .ssh/chandan@arch_laptop)"
+
 
 # ----- Shell integrations ---------------------------------------------------
