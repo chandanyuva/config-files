@@ -9,7 +9,7 @@ if ! pgrep -x "swww-daemon" > /dev/null; then
 fi
 
 # Get a list of image files (adjust extensions as needed)
-files=("$WALLPAPER_DIR"/*.{jpg,png,jpeg,gif})
+files=("$WALLPAPER_DIR"/*.{jpg,png,jpeg})
 
 # Check if there are any wallpapers
 if [ ${#files[@]} -eq 0 ]; then
@@ -25,6 +25,6 @@ while true; do
     swww img "$random_image" --transition-type "$TRANSITION_TYPE" --transition-fps 60 --transition-step 90
 
     # Sleep for a duration (e.g., 30 minutes) before the next change
-    sleep 10m
+    sleep 5m
 done
 
