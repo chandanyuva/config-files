@@ -10,3 +10,7 @@ export SSH_ASKPASS_REQUIRE=prefer
 
 # opencode
 export PATH=/home/chandan/.opencode/bin:$PATH
+
+# scripts
+export PATH="$HOME/.local/bin:$PATH"
+
