@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+# Extensions Zathura typically supports
+EXTENSIONS="pdf djvu ps epub cbz cbr"
+
+# Default directories to scan
+DIRECTORIES="$HOME $HOME/Downloads /mnt/smb_share/Books/"
+
+scan_zathura_files() {
+    local dir="$1"
+
+    local patterns=()
+    for ext in $EXTENSIONS; do
+        patterns+=("-e" "$ext")
+    done
+
+    fd "${patterns[@]}" --type f . "$dir"
+}
+
+main() {
+    local dirs=($DIRECTORIES)
+
+    if [[ $# -gt 0 ]]; then
+        dirs+=("$@")
+    fi
+
+    # Collect matches from all directories
+    local results=""
+    for dir in "${dirs[@]}"; do
+        if [[ -d "$dir" ]]; then
+            results+=$(scan_zathura_files "$dir")
+            results+=$'\n'
+        else
+            echo "Warning: $dir is not a directory" >&2
+        fi
+    done
+
+    # Pipe to fzf
+    local selected
+    selected=$(printf "%s" "$results" | fzf --prompt="📚 Open with Zathura: ")
+
+    # If something is selected, open it
+    if [[ -n "$selected" ]]; then
+        zathura "$selected" &
+    fi
+}
+
+main "$@"

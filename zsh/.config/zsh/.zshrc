@@ -104,6 +104,14 @@ fzf_nvim_open() {
 zle -N fzf_nvim_open
 bindkey '^F' fzf_nvim_open
 
+zathura_finder() {
+    fzf-pdf-zathura   # script in bin
+    zle reset-prompt
+}
+
+zle -N zathura_finder
+bindkey '^P' zathura_finder
+
 # ----- keybinds and functions setup -----------------------------------------
 
 
@@ -172,3 +180,5 @@ alias lta="exa --sort Name --long --tree --all"
 eval "$(fzf --zsh)"
 
 # ----- Shell integrations ---------------------------------------------------
+
+export PATH="$HOME/.local/bin:$PATH"
