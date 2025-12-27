@@ -3,6 +3,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+if [[ "$TERM" == "xterm-kitty" && -n "$SSH_CONNECTION" ]]; then
+  export TERM=xterm-256color
+fi
+
 # auto start tmux only when sshing
 if [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
     exec tmux new-session -A -s main
