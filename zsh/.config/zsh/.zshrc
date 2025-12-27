@@ -176,8 +176,8 @@ alias lra="exa --sort Name --long --recurse --all"
 alias lt="exa --sort Name --long --tree"
 alias lta="exa --sort Name --long --tree --all"
 
-alias paci="sudo pacman -S"
-alias pacs="pacman -Ss"
+alias lg="lazygit"
+alias ld="lazydocker"
 
 # ----- alias setup ----------------------------------------------------------
 
