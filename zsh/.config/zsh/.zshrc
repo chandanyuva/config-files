@@ -176,8 +176,8 @@ alias lra="exa --sort Name --long --recurse --all"
 alias lt="exa --sort Name --long --tree"
 alias lta="exa --sort Name --long --tree --all"
 
-alias lg="lazygit"
-alias ld="lazydocker"
+alias lzg="lazygit"
+alias lzd="lazydocker"
 
 # ----- alias setup ----------------------------------------------------------
 

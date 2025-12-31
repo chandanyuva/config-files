@@ -35,6 +35,10 @@ ShellRoot {
     property var lastCpuIdle: 0
     property var lastCpuTotal: 0
 
+    // Battery
+    property int batteryPercent: 0
+    property string batteryState: "unknown"
+
     // Kernel version
     Process {
         id: kernelProc
@@ -154,6 +158,37 @@ ShellRoot {
         }
         Component.onCompleted: running = true
     }
+
+    // Battery status
+Process {
+    id: batteryProc
+    command: [
+        "sh", "-c",
+        "upower -i $(upower -e | grep BAT) | grep -E 'state|percentage'"
+    ]
+
+    stdout: SplitParser {
+        onRead: data => {
+            if (!data) return
+
+            if (data.includes("percentage")) {
+                batteryPercent = parseInt(data.replace(/[^0-9]/g, "")) || 0
+            } else if (data.includes("state")) {
+                batteryState = data.split(":")[1].trim()
+            }
+        }
+    }
+
+    Component.onCompleted: running = true
+}
+
+Timer {
+    interval: 5000   // 5 seconds
+    running: true
+    repeat: true
+    onTriggered: batteryProc.running = true
+  }
+
 
     // Slow timer for system stats
     Timer {
@@ -400,6 +435,23 @@ ShellRoot {
                         Layout.rightMargin: 8
                         color: root.colMuted
                     }
+
+Text {
+    property string batteryIcon: {
+        if (batteryState === "charging") return "󰂄"
+        if (batteryPercent >= 90) return "󰁹"
+        if (batteryPercent >= 60) return "󰂂"
+        if (batteryPercent >= 30) return "󰂀"
+        return "󰁺"
+    }
+
+    text: batteryIcon + " " + batteryPercent + "%"
+    color: batteryPercent < 20 ? root.colRed : root.colFg
+    font.pixelSize: root.fontSize
+    font.family: root.fontFamily   // FiraCode Nerd Font
+    font.bold: true
+    Layout.rightMargin: 8
+}
 
                     Text {
                         id: clockText
