@@ -4,3 +4,4 @@ nvim/.config/nvim/lazy-lock.json
 
 # tmux plugins (managed by TPM)
 tmux/.config/tmux/plugins/
+hyperland/.config/hypr/noctalia/noctalia-colors.conf
