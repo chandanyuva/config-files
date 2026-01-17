@@ -4,7 +4,7 @@
 EXTENSIONS="pdf djvu ps epub cbz cbr"
 
 # Default directories to scan
-DIRECTORIES="$HOME $HOME/Downloads /mnt/smb_share/Books/"
+DIRECTORIES="$HOME $HOME/Downloads /mnt/HDD_smb/Books/"
 
 scan_zathura_files() {
     local dir="$1"
