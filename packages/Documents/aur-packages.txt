@@ -1,0 +1,4 @@
+##### install using below to commands
+##### sed -e 's/#.*//' -e '/^\s*$/d' aur-packages.txt | xargs yay -S --needed --noconfirm
+
+ttf-ms-fonts

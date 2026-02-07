@@ -1,0 +1,152 @@
+##### install using below to commands
+##### sed -e 's/#.*//' -e '/^\s*$/d' ~/Documents/packages.txt | xargs sudo pacman -S --needed --noconfirm
+
+
+# ======================
+# my prefs
+# ======================
+chromium             # browser
+kitty                # terminal
+neovim               # term-text-editor
+bitwarden            # password-manager
+
+
+# ======================
+# Terminal, shell & CLI tools
+# ======================
+zsh                  # advanced shell
+zsh-completions      # extra tab completions for zsh
+tmux                 # term multiplexor
+# starship             # cross-shell prompt
+git                  # version control system
+ripgrep              # fast text search tool
+fd                   # faster find alternative
+htop                 # interactive process viewer
+btop                 # modern resource monitor
+wget                 # file downloader
+curl                 # data transfer tool
+bat                  # cat replacement
+fzf                  # fuzzy-finder
+stow                 # dotfiles-manager
+lazygit              # git TUI
+lazydocker           # docker TUI
+
+# ======================
+# Core system
+# ======================
+base                 # minimal Arch base system
+base-devel           # build tools (make, gcc) required for AUR
+linux-headers        # kernel headers for DKMS/modules
+man-db               # man page database
+man-pages            # official Linux man pages
+pacman-contrib       # useful pacman tools (paccache, pactree)
+
+# ======================
+# Filesystems & disks
+# ======================
+dosfstools           # FAT filesystem tools
+e2fsprogs            # ext4 filesystem utilities
+ntfs-3g              # NTFS read/write support
+exfatprogs           # exFAT filesystem support
+udisks2              # disk mounting service for desktops
+gvfs                 # virtual filesystem support
+gvfs-mtp             # MTP support for phones
+
+# ======================
+# Networking
+# ======================
+networkmanager       # main network management service
+network-manager-applet # tray UI for NetworkManager
+inetutils            # basic network tools (ping, ftp, etc.)
+dnsutils             # DNS query tools (dig, nslookup)
+
+# ======================
+# Audio / video (PipeWire)
+# ======================
+pipewire             # modern audio/video server
+pipewire-alsa        # ALSA compatibility layer
+pipewire-pulse       # PulseAudio replacement
+pipewire-jack        # JACK compatibility layer
+wireplumber          # PipeWire session manager
+pavucontrol          # graphical audio control panel
+
+# ======================
+# Bluetooth
+# ======================
+bluez                # Bluetooth protocol stack
+bluez-utils          # Bluetooth utilities (bluetoothctl)
+blueman              # graphical Bluetooth manager
+
+# ======================
+# Graphics & Wayland
+# ======================
+mesa                 # OpenGL/Vulkan drivers
+vulkan-icd-loader    # Vulkan loader
+vulkan-validation-layers # Vulkan debugging layers
+wayland              # Wayland display protocol
+wayland-protocols    # additional Wayland protocols
+xorg-xwayland        # X11 apps support under Wayland
+
+# ======================
+# Hyprland essentials
+# ======================
+hyprland             # Wayland compositor
+xdg-desktop-portal   # desktop integration API
+xdg-desktop-portal-hyprland # portal backend for Hyprland
+qt5-wayland          # Qt5 Wayland support
+qt6-wayland          # Qt6 Wayland support
+polkit-kde-agent     # authentication agent for GUI apps
+
+# ======================
+# COSMIC desktop
+# ======================
+cosmic-session       # COSMIC session manager
+cosmic-settings      # COSMIC settings application
+xdg-desktop-portal-cosmic # portal backend for COSMIC
+
+# ======================
+# Core UI fonts
+# ======================
+noto-fonts            # primary font family with massive Unicode coverage
+noto-fonts-emoji      # emoji support (very important for browsers)
+noto-fonts-cjk        # Chinese / Japanese / Korean characters
+ttf-dejavu            # solid fallback fonts used by many apps
+ttf-liberation        # metric-compatible replacements for Arial/Times/etc.
+
+# Optional extras
+ttf-roboto            # common web UI font
+ttf-ubuntu-font-family # Ubuntu-style UI font
+noto-fonts-extra      # rare scripts & symbols
+
+# ======================
+# Monospace (default)
+# ======================
+ttf-firacode-nerd     # programming font with ligatures
+
+# ======================
+# Archives & utilities
+# ======================
+unzip                # extract zip files
+zip                  # create zip files
+p7zip                # 7z archive support
+unrar                # extract rar archives
+rsync                # fast file synchronization
+lsof                 # list open files
+usbutils             # USB device inspection
+pciutils             # PCI device inspection
+
+# ======================
+# Power management (laptops)
+# ======================
+tlp                  # advanced laptop power management
+tlp-rdw              # radio device support for TLP
+power-profiles-daemon # simple power profiles (GNOME-style)
+acpi                 # ACPI info and events
+acpid                # ACPI daemon
+
+# ======================
+# Printing & discovery
+# ======================
+cups                 # printing system
+cups-pdf             # virtual PDF printer use "http://localhost:631/" after restarting cups.service
+avahi                # network service discovery (mDNS)
