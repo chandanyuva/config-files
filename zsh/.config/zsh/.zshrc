@@ -168,13 +168,13 @@ alias ls='ls --color'
 alias grep='grep --color=auto'
 alias v='nvim'
 
-alias l="exa --sort Name"
-alias ll="exa --sort Name --long"
-alias la="exa --sort Name --long --all"
-alias lr="exa --sort Name --long --recurse"
-alias lra="exa --sort Name --long --recurse --all"
-alias lt="exa --sort Name --long --tree"
-alias lta="exa --sort Name --long --tree --all"
+alias l="eza --sort Name --icons"
+alias ll="eza --sort Name --long --icons"
+alias la="eza --sort Name --long --all --icons"
+alias lr="eza --sort Name --long --recurse --icons"
+alias lra="eza --sort Name --long --recurse --all --icons"
+alias lt="eza --sort Name --long --tree --icons"
+alias lta="eza --sort Name --long --tree --all --icons"
 
 alias lzg="lazygit"
 alias lzd="lazydocker"

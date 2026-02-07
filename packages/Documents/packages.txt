@@ -9,7 +9,7 @@ chromium             # browser
 kitty                # terminal
 neovim               # term-text-editor
 bitwarden            # password-manager
-
+zathura              # pdf-viewer
 
 # ======================
 # Terminal, shell & CLI tools
@@ -28,6 +28,8 @@ curl                 # data transfer tool
 bat                  # cat replacement
 fzf                  # fuzzy-finder
 stow                 # dotfiles-manager
+docker               # docker-engine
+docker-compose       # alternate CLI frontend for docker-engine
 lazygit              # git TUI
 lazydocker           # docker TUI
 
