@@ -10,6 +10,18 @@ kitty                # terminal
 neovim               # term-text-editor
 bitwarden            # password-manager
 zathura              # pdf-viewer
+zathura-pdf-mupdf    # plugin for zathura
+telegram-desktop     # messaging
+feh                  # image-viewer
+mpv                  # video-player
+opencode             # coding-agent
+
+# ======================
+# my prefs
+# ======================
+
+hyprpolkitagent      # authentication agent
+wl-clipboard              # clipboard
 
 # ======================
 # Terminal, shell & CLI tools
