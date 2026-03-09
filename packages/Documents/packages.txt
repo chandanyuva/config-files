@@ -15,6 +15,7 @@ telegram-desktop     # messaging
 feh                  # image-viewer
 mpv                  # video-player
 opencode             # coding-agent
+jq                   # pritty print json in terminal
 
 # ======================
 # my prefs
