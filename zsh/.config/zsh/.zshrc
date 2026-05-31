@@ -7,8 +7,12 @@ if [[ "$TERM" == "xterm-kitty" && -n "$SSH_CONNECTION" ]]; then
   export TERM=xterm-256color
 fi
 
-# auto start tmux only when sshing
-if [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
+# Detect WSL
+is_wsl=false
+grep -qi microsoft /proc/version 2>/dev/null && is_wsl=true
+
+# auto start tmux only when sshing and in wsl
+if [[ -z "$TMUX" && ( -n "$SSH_TTY" || "$is_wsl" == true ) ]]; then
     exec tmux new-session -A -s main
 fi
 
