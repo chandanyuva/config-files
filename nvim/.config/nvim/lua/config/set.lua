@@ -20,6 +20,16 @@ vim.o.inccommand = "split"
 opt.backspace = { "eol", "start", "indent" } -- allow backspacing over everything in insert mode
 
 opt.clipboard = "unnamedplus" -- allow neovim to access the system clipboard
+
+-- WSL clipboard: use Windows clip.exe instead of wl-copy
+if vim.fn.has("wsl") == 1 then
+	vim.g.clipboard = {
+		name = "WSL Clipboard (Windows)",
+		copy = { ["+"] = "/mnt/c/Windows/System32/clip.exe", ["*"] = "/mnt/c/Windows/System32/clip.exe" },
+		paste = { ["+"] = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c Get-Clipboard", ["*"] = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c Get-Clipboard" },
+		cache_enabled = 0,
+	}
+end
 opt.fileencoding = "utf-8" -- the encoding written to a file
 opt.encoding = "utf-8" -- the encoding
 opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }

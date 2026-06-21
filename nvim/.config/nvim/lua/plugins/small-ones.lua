@@ -31,7 +31,7 @@ return {
 		opts = {},
 	},
 	{
-		"norcalli/nvim-colorizer.lua",
+		"catgoose/nvim-colorizer.lua",
 		name = "colorizer",
 		config = function()
 			require("colorizer").setup()

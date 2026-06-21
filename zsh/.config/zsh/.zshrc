@@ -13,9 +13,12 @@ grep -qi microsoft /proc/version 2>/dev/null && is_wsl=true
 
 # auto start tmux only when sshing and in wsl
 if [[ -z "$TMUX" && ( -n "$SSH_TTY" || "$is_wsl" == true ) ]]; then
-    exec tmux new-session -A -s main
+    if tmux has-session 2>/dev/null; then
+        exec tmux attach-session
+    else
+        exec tmux new-session -s main
+    fi
 fi
-
 # ----- initial setup -------------------------------------------------------
 
 
