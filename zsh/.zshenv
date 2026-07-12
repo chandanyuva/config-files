@@ -9,7 +9,7 @@ export SSH_ASKPASS=/usr/bin/ksshaskpass
 export SSH_ASKPASS_REQUIRE=prefer
 
 # opencode
-export PATH=/home/chandan/.opencode/bin:$PATH
+export PATH="$HOME/.opencode/bin:$PATH"
 
 # scripts
 export PATH="$HOME/.local/bin:$PATH"
