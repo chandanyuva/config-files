@@ -4,7 +4,7 @@
 [[ $- != *i* ]] && return
 
 if [[ "$TERM" == "xterm-kitty" && -n "$SSH_CONNECTION" ]]; then
-  export TERM=xterm-256color
+  export TERM=tmux-256color
 fi
 
 # Detect WSL
