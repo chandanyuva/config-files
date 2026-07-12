@@ -1,54 +1,160 @@
-CTRL-] : Press  CTRL-]  to jump to a subject under the cursor.
-CTRL-O : Press  CTRL-O  to jump back (repeat to go further back).
-CTRL-T : (pop tag) takes you back to the preceding position.
+# Neovim Config — Keybinding Cheat Sheet
 
-":e!" : discard changes and continue editing with Vim : The ":e!" command reloads the original version of the file.
+26 plugins, Neovim 0.12.3, `vim.pack` native plugin management.
 
-If you need to know everything about regular expressions, start reading at:
-    :help pattern.txt
-Registers always start with "quote". To find out about the special ":" register:
-	:help quote:
+## General
 
-gg : start of file
-G : end of file
-{num}G : go to line [num] of file
-{num}% : go to [num] % of file
-Ctrl+G : show "usr_03.txt" line 233 of 650 --35%-- col 45-52 
-H : top of visible page
-M : middle of visible page
-L : bottom of visible page
-Ctrl+U : scrolls down half a screen of text
-Ctrl+D : scrolls up half a screen of text
-Ctrl+E : scrolls up one line
-Ctrl+Y : scrolls down one line
-Ctrl+F : scrolls forward whole screen
-Ctrl+B : scrolls backward whole screen
-zz : center the cursor
-zt : move cursor top
-zb : move cursor bottom
-/{word} : to search
-Note:
-	The characters .*[]^%/\?~$ have special meanings.  If you want to use them in a search you must put a \ in front of them.
-? : works like "/" but searches backwards
-N : repeats the last search the opposite direction
-Note:
-    using "N" after a "/" command search backwards, using "N" after "?" searches
-forward.
-* : search current word under cursor
-# : search current word under cursor bacwards
-`` : jump back to past position
-Ctrl+O : jumps to older positions
-Ctrl+I : jumps to newer positions
-:jumps : gives a list of positions you jumped to
-named marks
-m{char} : marks the current cursor location to {char}
-`{mark} : backtick + a mark takes the cursor to that position
-Note:
-    'mark (single quotation mark, or apostrophe) moves you to the beginning of the line containing the mark. This differs from the `mark command, which moves you to marked column.
-:marks : get a list of marks
+| Key | Mode | Action |
+|-----|------|--------|
+| `Esc` | n | Clear search highlights |
+| `J` / `K` | v | Move selected lines down / up |
+| `<C-h>` | n | Move to left window |
+| `<C-j>` | n | Move to window below |
+| `<C-k>` | n | Move to window above |
+| `<C-l>` | n | Move to right window |
+| `<leader>q` | n | Send diagnostics to quickfix list |
 
-You will notice a few special marks.  These include:
-    ''	The cursor position before doing a jump
-	"	The cursor position when last editing the file
-	[	Start of the last change
-	]	End of the last change
+## Find (fzf-lua)
+
+| Key | Action |
+|-----|--------|
+| `<leader>ff` | Find files |
+| `<leader>fg` | Live grep |
+| `<leader>fw` | Find current word under cursor |
+| `<leader>fd` | Find diagnostics (workspace) |
+| `<leader>fr` | Resume last search |
+| `<leader>fb` | Find buffers |
+| `<leader><leader>` | Find buffers (alt) |
+| `<leader>fh` | Find help tags |
+| `<leader>fk` | Find keymaps |
+| `<leader>fc` | Find config files |
+
+## Buffer
+
+| Key | Action |
+|-----|--------|
+| `<leader>]` | Next buffer |
+| `<leader>[` | Previous buffer |
+| `<leader>bx` | Delete buffer |
+
+## File Explorer (oil)
+
+| Key | Action |
+|-----|--------|
+| `<leader>e` | Open parent directory (floating) |
+
+## Harpoon
+
+| Key | Action |
+|-----|--------|
+| `<C-e>` | Toggle quick menu |
+| `<leader>a` | Add file to harpoon |
+| `<leader>1` | Jump to harpoon mark 1 |
+| `<leader>2` | Jump to harpoon mark 2 |
+| `<leader>3` | Jump to harpoon mark 3 |
+| `<leader>4` | Jump to harpoon mark 4 |
+
+## LSP
+
+| Key | Action |
+|-----|--------|
+| `gd` | Go to definition |
+| `gD` | Go to declaration |
+| `gO` | Document symbols (fzf-lua) |
+| `gW` | Workspace symbols (fzf-lua) |
+| `<leader>th` | Toggle inlay hints |
+| `<leader>li` | Show LSP info |
+
+## Session (persistence)
+
+| Key | Action |
+|-----|--------|
+| `<leader>ss` | Restore session |
+| `<leader>sl` | Restore last session |
+| `<leader>sd` | Save session |
+
+## Breadcrumbs
+
+| Key | Action |
+|-----|--------|
+| `<leader>to` | Toggle path breadcrumbs panel |
+
+## Snacks Modules
+
+| Key | Action |
+|-----|--------|
+| `<leader>tt` | Toggle floating terminal |
+| `<leader>z` | Toggle zen mode |
+
+## Undo Tree
+
+| Key | Action |
+|-----|--------|
+| `<leader>u` | Toggle undo tree |
+
+## Format (conform)
+
+| Key | Action |
+|-----|--------|
+| `<leader>cf` | Format buffer |
+
+## Diagnostics (trouble)
+
+| Key | Action |
+|-----|--------|
+| `<leader>xx` | Toggle diagnostics (all) |
+| `<leader>xX` | Toggle diagnostics (current buffer) |
+| `<leader>xL` | Toggle location list |
+| `<leader>xQ` | Toggle quickfix list |
+
+## Terminal
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `<Esc><Esc>` | t | Exit terminal mode |
+
+## Which-Key Groups
+
+Press `<leader>` and wait 200ms to see available groups:
+
+| Prefix | Group |
+|--------|-------|
+| `<leader>f` | Find |
+| `<leader>b` | Buffer |
+| `<leader>t` | Toggle |
+| `<leader>s` | Session |
+| `<leader>l` | LSP |
+| `<leader>c` | Code / Format |
+| `<leader>x` | Diagnostics / Trouble |
+| `gr` | LSP Actions |
+
+## Plugins
+
+| Plugin | Purpose |
+|--------|---------|
+| rose-pine | Colorscheme |
+| mini.nvim | Icons, pairs, indentscope, statusline |
+| fidget.nvim | LSP progress spinners |
+| gitsigns.nvim | Git signs in gutter |
+| which-key.nvim | Keymap hints |
+| persistence.nvim | Session management |
+| nvim-colorizer.lua | Color previews |
+| Comment.nvim | Commenting (gcc/gc) |
+| fzf-lua | Fuzzy finder |
+| oil.nvim | File explorer |
+| harpoon | Quick file navigation |
+| snacks.nvim | QoL: notifier, scroll, input, zen, terminal |
+| breadcrumbs | Path panel showing current file location in project tree |
+| undotree | Undo tree visualizer |
+| mason.nvim | LSP installer |
+| mason-lspconfig.nvim | LSP bridge |
+| mason-tool-installer.nvim | Tool installer |
+| nvim-lspconfig | Server config catalog |
+| lazydev.nvim | Lua LSP integration |
+| blink.cmp | Completion engine |
+| plenary.nvim | Utility (harpoon dep) |
+| conform.nvim | Format-on-save |
+| nvim-lint | Lint-on-save |
+| trouble.nvim | Diagnostics UI |
+| render-markdown.nvim | Markdown rendering |
+| nvim-treesitter | Parser installation |
