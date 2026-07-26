@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Toggle btop in a tmux popup
+
+popup_name="__btop__"
+
+if [ "$(tmux display-message -p -F "#{session_name}")" = "$popup_name" ]; then
+    tmux detach-client
+else
+    tmux display-popup -d '#{pane_current_path}' -w 90% -h 90% -E "tmux attach -t $popup_name || tmux new -s $popup_name btop"
+fi

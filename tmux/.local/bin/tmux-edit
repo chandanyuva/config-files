@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Fuzzy find file and open in nvim
+
+start_dir="$(tmux display-message -p -F '#{pane_current_path}')"
+
+tmux display-popup -d "$start_dir" -w 90% -h 90% -E bash -c '
+cd "'"$start_dir"'" || exit 1
+selected=$(fd --type f --hidden --exclude .git --exclude node_modules --exclude .cache 2>/dev/null | \
+    fzf --height 100% --reverse --prompt="File > " \
+        --preview "bat --color=always --style=numbers {} 2>/dev/null || head -100 {}" \
+        --preview-window=right:60%)
+
+[ -z "$selected" ] && exit 0
+
+${EDITOR:-nvim} "$selected"
+'

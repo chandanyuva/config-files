@@ -73,12 +73,6 @@
 | `<leader>sl` | Restore last session |
 | `<leader>sd` | Save session |
 
-## Breadcrumbs
-
-| Key | Action |
-|-----|--------|
-| `<leader>to` | Toggle path breadcrumbs panel |
-
 ## Snacks Modules
 
 | Key | Action |
@@ -144,7 +138,6 @@ Press `<leader>` and wait 200ms to see available groups:
 | oil.nvim | File explorer |
 | harpoon | Quick file navigation |
 | snacks.nvim | QoL: notifier, scroll, input, zen, terminal |
-| breadcrumbs | Path panel showing current file location in project tree |
 | undotree | Undo tree visualizer |
 | mason.nvim | LSP installer |
 | mason-lspconfig.nvim | LSP bridge |

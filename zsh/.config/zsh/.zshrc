@@ -61,7 +61,7 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Add in zsh plugins
 zinit ice wait lucid; zinit light zsh-users/zsh-completions
-zinit ice wait lucid; zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-autosuggestions
 zinit ice wait lucid atload"zicompinit; zicdreplay"; zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-syntax-highlighting  # must be last, sync
 
