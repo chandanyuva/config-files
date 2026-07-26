@@ -11,6 +11,7 @@ conform.setup({
     css = { "prettierd", "prettier", stop_after_first = true },
     html = { "prettierd", "prettier", stop_after_first = true },
     markdown = { "prettierd", "prettier", stop_after_first = true },
+    sql = { "sqlfluff" },
   },
   format_on_save = {
     timeout_ms = 500,

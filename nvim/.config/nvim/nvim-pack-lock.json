@@ -57,6 +57,14 @@
       "rev": "4171fba613b64ade9a28e198bd5b4fea5ba45e22",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
+    "noice.nvim": {
+      "rev": "7bfd942445fb63089b59f97ca487d605e715f155",
+      "src": "https://github.com/folke/noice.nvim"
+    },
+    "nui.nvim": {
+      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
+      "src": "https://github.com/MunifTanjim/nui.nvim"
+    },
     "nvim-colorizer.lua": {
       "rev": "149fbd9f5e25511b0a8bad3ccecd43d1bc584f86",
       "src": "https://github.com/catgoose/nvim-colorizer.lua"
@@ -100,6 +108,18 @@
     "undotree": {
       "rev": "02b69aed427b848c4dca483fc5e9524b6019c296",
       "src": "https://github.com/jiaoshijie/undotree"
+    },
+    "vim-dadbod": {
+      "rev": "6d1d41da4873a445c5605f2005ad2c68c99d8770",
+      "src": "https://github.com/tpope/vim-dadbod"
+    },
+    "vim-dadbod-completion": {
+      "rev": "a8dac0b3cf6132c80dc9b18bef36d4cf7a9e1fe6",
+      "src": "https://github.com/kristijanhusak/vim-dadbod-completion"
+    },
+    "vim-dadbod-ui": {
+      "rev": "afd07819d8efcefc3317205b855ad4e3513b0011",
+      "src": "https://github.com/kristijanhusak/vim-dadbod-ui"
     },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",

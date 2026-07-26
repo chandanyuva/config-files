@@ -1,12 +1,7 @@
 local Snacks = require("snacks")
 
 Snacks.setup({
-  notifier = {
-    enabled = true,
-    timeout = 3000,
-    level = vim.log.levels.INFO,
-    style = "compact",
-  },
+  notifier = { enabled = false },
   quickfile = { enabled = true },
   scroll = {
     enabled = true,

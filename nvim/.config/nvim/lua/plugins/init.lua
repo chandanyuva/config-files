@@ -49,17 +49,28 @@ vim.pack.add({
   { src = gh("MeanderingProgrammer/render-markdown.nvim"), name = "render-markdown.nvim" },
 })
 
+vim.pack.add({
+  { src = gh("tpope/vim-dadbod"), name = "vim-dadbod" },
+  { src = gh("kristijanhusak/vim-dadbod-ui"), name = "vim-dadbod-ui" },
+  { src = gh("kristijanhusak/vim-dadbod-completion"), name = "vim-dadbod-completion" },
+})
+
+vim.pack.add({
+  { src = gh("folke/noice.nvim"), name = "noice.nvim" },
+  { src = gh("MunifTanjim/nui.nvim"), name = "nui.nvim" },
+})
+
 -- ============================================
 -- Mason setup (must run after pack declarations, before LSP)
 -- ============================================
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "vtsls", "gopls", "pyright", "clangd", "lua_ls" },
+  ensure_installed = { "vtsls", "gopls", "pyright", "clangd", "lua_ls", "sqls" },
   automatic_enable = false,
 })
 require("mason-tool-installer").setup({
-  ensure_installed = { "stylua", "eslint_d", "prettierd" },
+  ensure_installed = { "stylua", "eslint_d", "prettierd", "sqlfluff" },
 })
 
 -- ============================================
@@ -84,3 +95,5 @@ require("plugins.conform")
 require("plugins.lint")
 require("plugins.trouble")
 require("plugins.markdown")
+require("plugins.dadbod")
+require("plugins.noice")

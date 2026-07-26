@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+SSH_CONFIG="$HOME/.ssh/config"
+
+# Extract host names (ignore wildcards)
+hosts=$(awk '
+  $1 == "Host" {
+    for (i = 2; i <= NF; i++) {
+      if ($i !~ /\*/ && $i !~ /\?/ ) print $i
+    }
+  }
+' "$SSH_CONFIG" | sort -u)
+
+# Exit if no hosts found
+[[ -z "$hosts" ]] && exit 0
+
+# Pick host via fzf
+selected=$(printf "%s\n" "$hosts" | fzf \
+  --prompt="SSH > " \
+  --height=40% \
+  --border \
+  --reverse \
+  --preview "ssh -G {} | grep -E '^(hostname|user|port) '")
+
+[[ -z "$selected" ]] && exit 0
+
+# Open SSH
+tmux new-window -n "ssh:$selected" "ssh $selected"

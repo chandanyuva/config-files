@@ -47,8 +47,11 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
+-- sqls: SQL
+vim.lsp.config("sqls", {})
+
 -- Enable all servers (nvim-lspconfig provides cmd/filetypes/root_markers)
-for _, server in ipairs({ "vtsls", "gopls", "pyright", "clangd", "lua_ls" }) do
+for _, server in ipairs({ "vtsls", "gopls", "pyright", "clangd", "lua_ls", "sqls" }) do
 	vim.lsp.enable(server)
 end
 
