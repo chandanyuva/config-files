@@ -4,3 +4,11 @@ nvim/.config/nvim/lazy-lock.json
 # tmux plugins (managed by TPM)
 tmux/.config/tmux/plugins/
 hyperland/.config/hypr/noctalia/noctalia-colors.conf
+
+# opencode: only agent/ and command/ belong in the repo
+opencode/.config/opencode/node_modules/
+opencode/.config/opencode/package.json
+opencode/.config/opencode/package-lock.json
+opencode/.config/opencode/bun.lock
+opencode/.config/opencode/opencode.json
+opencode/.config/opencode/.gitignore
