@@ -60,6 +60,14 @@ vim.pack.add({
   { src = gh("MunifTanjim/nui.nvim"), name = "nui.nvim" },
 })
 
+vim.pack.add({
+  {
+    src = gh("nvim-treesitter/nvim-treesitter"),
+    name = "nvim-treesitter",
+    version = "main",
+  },
+})
+
 -- ============================================
 -- Mason setup (must run after pack declarations, before LSP)
 -- ============================================
@@ -88,6 +96,7 @@ require("plugins.mini")
 require("plugins.fidget")
 require("plugins.persistence")
 require("plugins.colorizer")
+require("plugins.nvim-treesitter")
 require("plugins.comment")
 require("plugins.snacks")
 require("plugins.undotree")

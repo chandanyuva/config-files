@@ -5,8 +5,8 @@ export VISUAL="nvim"
 
 # sshkey 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-export SSH_ASKPASS=/usr/bin/ksshaskpass
-export SSH_ASKPASS_REQUIRE=prefer
+# export SSH_ASKPASS=/usr/bin/ksshaskpass
+# export SSH_ASKPASS_REQUIRE=prefer
 
 # opencode
 export PATH="$HOME/.opencode/bin:$PATH"
@@ -14,3 +14,5 @@ export PATH="$HOME/.opencode/bin:$PATH"
 # scripts
 export PATH="$HOME/.local/bin:$PATH"
 
+# go programs
+export PATH=$PATH:$HOME/go/bin
