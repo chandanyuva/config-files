@@ -12,6 +12,20 @@ Snacks.setup({
   },
   input = { enabled = true },
   zen = { enabled = true },
+  indent = {
+    enabled = true,
+    indent = {
+      char = "│",
+      hl = "SnacksIndent",
+    },
+    scope = {
+      enabled = true,
+      char = "│",
+      hl = "SnacksIndentScope",
+      underline = false,
+    },
+    animate = { enabled = true },
+  },
   terminal = {
     enabled = true,
     win = {

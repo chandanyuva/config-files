@@ -21,6 +21,7 @@ require("nvim-treesitter").install({
 
 -- On-demand install of the parser for any other filetype you open
 local queued = {}
+local available
 vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     local ft = vim.bo.filetype
@@ -32,6 +33,11 @@ vim.api.nvim_create_autocmd("FileType", {
       return
     end
     if pcall(vim.treesitter.language.inspect, lang) then
+      return
+    end
+    available = available or require("nvim-treesitter").get_available()
+    if not vim.tbl_contains(available, lang) then
+      queued[lang] = true -- not a known tree-sitter language; don't retry
       return
     end
     queued[lang] = true
