@@ -8,4 +8,9 @@ require("noice").setup({
     command_palette = true,
     long_message_to_split = true,
   },
+  views = {
+    hover = {
+      border = { style = "rounded", padding = { 0, 1 } },
+    },
+  },
 })
