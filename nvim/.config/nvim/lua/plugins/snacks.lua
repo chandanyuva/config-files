@@ -1,7 +1,7 @@
 local Snacks = require("snacks")
 
 Snacks.setup({
-  notifier = { enabled = false },
+  notifier = { enabled = true },
   quickfile = { enabled = true },
   scroll = {
     enabled = true,

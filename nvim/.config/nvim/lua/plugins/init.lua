@@ -56,11 +56,6 @@ vim.pack.add({
 })
 
 vim.pack.add({
-  { src = gh("folke/noice.nvim"), name = "noice.nvim" },
-  { src = gh("MunifTanjim/nui.nvim"), name = "nui.nvim" },
-})
-
-vim.pack.add({
   {
     src = gh("nvim-treesitter/nvim-treesitter"),
     name = "nvim-treesitter",
@@ -105,4 +100,3 @@ require("plugins.lint")
 require("plugins.trouble")
 require("plugins.markdown")
 require("plugins.dadbod")
-require("plugins.noice")
